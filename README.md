@@ -1,4 +1,4 @@
-# ⚓ Broken Links Checker Widget by [@wottpal](https://twitter.com/wottpal)
+# 🔗 Broken Links Checker Widget by [@wottpal](https://twitter.com/wottpal)
 
 <!-- Buttons -->
 ![Release](https://img.shields.io/github/release/wottpal/kirby-broken-links-widget/all.svg)
