@@ -16,35 +16,47 @@ return [
   // ],
 
   'html' => function () {
+    // Gather Plugin-Options
+    $include_external = c::get('broken-links.include-external', false);
+    $include_fields = c::get('broken-links.include-fields', ['text']);
+    $exclude_pages = c::get('broken-links.exclude-pages', []);
+
+    // Initialization
     $site = panel()->site();
+    $base_url = $site->url();
     $all_links = [];
     $broken_links = [];
     $regex = '/https?\:\/\/[^\" \n]+/i';
-    $base_url = $site->url();
 
-    // Gather Plugin-Options
-    $include_external = c::get('broken-links.include-external', false);
+    // Filter out excluded pages
+    $pages = $site->index()->filter(function ($page) use ($exclude_pages) {
+      return !in_array($page->id(), $exclude_pages);
+    });
 
-    // Determine all links in all pages
-    foreach($site->index() as $page) {
-      if ($page->text()->isNotEmpty()) {
-        $text = $page->text()->kt();
-        preg_match_all($regex, $text, $matches);
+    // Look through all pages and fields
+    foreach($pages as $page) {
+      foreach($include_fields as $field) {
 
-        // Determine internal & broken links
-        foreach($matches[0] as $link) {
-          $is_internal = substr($link, 0, strlen($base_url)) === $base_url;
-          if (!$is_internal && !$include_external) continue;
+        if ($page->$field()->isNotEmpty()) {
+          $text = $page->text()->kt();
+          preg_match_all($regex, $text, $matches);
 
-          $is_broken = get_http_response_code($link) == '404';
-          if (!$is_broken) continue;
+          // Determine internal & broken links
+          foreach($matches[0] as $link) {
+            $is_internal = substr($link, 0, strlen($base_url)) === $base_url;
+            if (!$is_internal && !$include_external) continue;
 
-          // Remove Base-URL Prefix (internal)
-          if ($is_internal) {
-            $link = substr($link, strlen($base_url));
+            $is_broken = get_http_response_code($link) == '404';
+            if (!$is_broken) continue;
+
+            // Remove Base-URL Prefix (internal)
+            if ($is_internal) {
+              $link = substr($link, strlen($base_url));
+            }
+
+            $broken_links[$page->id()][] = $link;
           }
 
-          $broken_links[$page->id()][] = $link;
         }
       }
     }

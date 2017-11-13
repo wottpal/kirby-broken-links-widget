@@ -30,6 +30,8 @@ The following options can be set globally in your `config.php` with `c::set($key
 key               | default | description
 ----------------- | ------- | ------------------------------------------------
 `include-external`     | `false`     | Not only test for internal links but also for external ones.*
+`include-fields`     | `['text']`     | Use other fields than `text` to search for broken links.
+`exclude-pages`     | `[]`     | Page-IDs to exclude from broken link search.
 
 \* **Not recommended yet because it only works synchonously with the page-load of your panel which will slow everything quite down a bit.**
 
@@ -41,9 +43,9 @@ Have a look at the [releases page](https://github.com/wottpal/kirby-anchor-headi
 
 # Roadmap
 
+- [x] Make pages excludable
+- [x] Make fields user-definable
 - [ ] Do checks asynchronously
-- [ ] Make pages/links excludable
-- [ ] At the moment it only looks at fields with the name `text`. Make this user-definable per page.
 - [ ] Check for internet-connection (if external links are enabled)
 
 
