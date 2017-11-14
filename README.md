@@ -39,7 +39,7 @@ key               | default | description
 
 # Changelog
 
-Have a look at the [releases page](https://github.com/wottpal/kirby-anchor-headings/releases).
+Have a look at the [releases page](https://github.com/wottpal/kirby-broken-links-widget/releases).
 
 
 # Roadmap
