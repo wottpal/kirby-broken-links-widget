@@ -20,6 +20,7 @@ return [
     $include_external = c::get('broken-links.include-external', false);
     $include_fields = c::get('broken-links.include-fields', ['text']);
     $exclude_pages = c::get('broken-links.exclude-pages', []);
+    $exclude_links = c::get('broken-links.exclude-links', ['/error']);
 
     // Initialization
     $site = panel()->site();
@@ -53,6 +54,10 @@ return [
             if ($is_internal) {
               $link = substr($link, strlen($base_url));
             }
+
+            // Filter out excluded links
+            $is_excluded = in_array($link, $exclude_links);
+            if ($is_excluded) continue;
 
             $broken_links[$page->id()][] = $link;
           }

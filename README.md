@@ -32,6 +32,7 @@ key               | default | description
 `include-external`     | `false`     | Not only test for internal links but also for external ones.*
 `include-fields`     | `['text']`     | Use other fields than `text` to search for broken links.
 `exclude-pages`     | `[]`     | Page-IDs to exclude from broken link search.
+`exclude-links`     | `['/error']`     | Page-IDs or external links to exclude from broken link search.
 
 \* **Not recommended yet because it only works synchonously with the page-load of your panel which will slow everything quite down a bit.**
 
