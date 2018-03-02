@@ -2,14 +2,15 @@
 
 include_once __DIR__ . DS . '..' . DS . 'helpers.php';
 
+loadBlinksTranslation();
 
 return [
 
-  'title' => 'Broken Links',
+  'title' => l::get('blinks.brokenLinks'),
 
   // 'options' => [
   //   [
-  //     'text' => 'Check now',
+  //     'text' => l::get('blinks.check'),
   //     'icon' => 'play-circle-o',
   //     'link' => '#imagekit-action-create',
   //   ],
@@ -69,7 +70,8 @@ return [
     // Populate the Widget-Template
     return tpl::load(__DIR__ . DS . 'template.php', [
       'broken_links' => $broken_links,
-      'has_broken_links' => !empty(array_filter($broken_links))
+      'has_broken_links' => !empty(array_filter($broken_links)),
+      'blinksOk' => l::get('blinks.ok')
     ]);
   }
 
