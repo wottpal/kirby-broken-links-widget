@@ -6,7 +6,7 @@ loadBlinksTranslation();
 
 return [
 
-  'title' => l::get('blinks.brokenLinks'),
+  'title' => l::get('broken-links.brokenLinks'),
 
   // 'options' => [
   //   [
@@ -71,7 +71,7 @@ return [
     return tpl::load(__DIR__ . DS . 'template.php', [
       'broken_links' => $broken_links,
       'has_broken_links' => !empty(array_filter($broken_links)),
-      'blinksOk' => l::get('blinks.ok')
+      'brokenLinksOk' => l::get('broken-links.ok')
     ]);
   }
 
