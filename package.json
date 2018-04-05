@@ -2,7 +2,7 @@
   "name": "broken-links-widget",
   "description": "A Kirby panel-widget which shows broken links within the pages.",
   "author": "Dennis Kerzig <hi@wottpal.com> (https://wottpal.com)",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "kirby-plugin",
   "license": "MIT"
 }

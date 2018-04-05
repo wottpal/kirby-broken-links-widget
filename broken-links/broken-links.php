@@ -4,17 +4,10 @@ include_once __DIR__ . DS . '..' . DS . 'helpers.php';
 
 loadBlinksTranslation();
 
+
 return [
 
   'title' => l::get('broken-links.brokenLinks'),
-
-  // 'options' => [
-  //   [
-  //     'text' => l::get('blinks.check'),
-  //     'icon' => 'play-circle-o',
-  //     'link' => '#imagekit-action-create',
-  //   ],
-  // ],
 
   'html' => function () {
     // Gather Plugin-Options

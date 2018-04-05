@@ -43,8 +43,5 @@
     <?php endforeach ?>
   </ul>
 
-  <!-- <div class="dashboard-box">
-
-</div> -->
 
 <?php endif ?>
