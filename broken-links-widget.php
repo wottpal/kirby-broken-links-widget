@@ -11,3 +11,27 @@
 
 
 $kirby->set('widget', 'broken-links', __DIR__ . DS . 'broken-links');
+
+/**
+ * Load languages for the plugin.
+ *
+ * @throws Exception
+ */
+function loadBlinksTranslation()
+{
+
+    if (defined('KIRBY')) {
+        $site = kirby()->site();
+        $code = $site->multilang() ? $site->language()->code() : 'en'; // fallback to en
+
+        try {
+            include_once __DIR__ . DS . 'languages' . DS . $code . '.php';
+        } catch (ErrorException $e) {
+            try {
+                include_once __DIR__ . DS . 'languages' . DS . 'en' . '.php';
+            } catch (ErrorException $e) {
+                throw new Exception("Uniform does not have a translation for the language '$code'.");
+            }
+        }
+    }
+}

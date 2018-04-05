@@ -16,7 +16,7 @@
 
 <?php if(!$has_broken_links): ?>
   <div class="dashboard-box" style="margin-top: 1rem;">
-    <div class="text">All internal links seem to be okay.</div>
+    <div class="text"><?= $brokenLinksOk ?></div>
   </div>
 
 <?php else: ?>
