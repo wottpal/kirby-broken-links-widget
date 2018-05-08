@@ -63,8 +63,7 @@ return [
     // Populate the Widget-Template
     return tpl::load(__DIR__ . DS . 'template.php', [
       'broken_links' => $broken_links,
-      'has_broken_links' => !empty(array_filter($broken_links)),
-      'brokenLinksOk' => l::get('broken-links.ok')
+      'has_broken_links' => !empty(array_filter($broken_links))
     ]);
   }
 

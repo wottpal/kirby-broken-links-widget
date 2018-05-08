@@ -5,7 +5,7 @@
 *
 * @package   Kirby CMS
 * @author    Dennis Kerzig <hi@wottpal.com>
-* @version   0.4.0
+* @version   0.5.0
 *
 */
 
@@ -20,7 +20,6 @@ $kirby->set('widget', 'broken-links', __DIR__ . DS . 'broken-links');
  */
 function loadBlinksTranslation()
 {
-
     if (defined('KIRBY')) {
         $site = kirby()->site();
         $code = $site->multilang() ? $site->language()->code() : $site->user()->language();

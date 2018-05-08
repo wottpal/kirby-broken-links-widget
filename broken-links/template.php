@@ -1,5 +1,6 @@
 <?php include_once __DIR__ . DS . '..' . DS . 'helpers.php'; ?>
 
+<?php loadBlinksTranslation(); ?>
 
 <style>
 .broken-link-list {
@@ -16,7 +17,7 @@
 
 <?php if(!$has_broken_links): ?>
   <div class="dashboard-box" style="margin-top: 1rem;">
-    <div class="text"><?= $brokenLinksOk ?></div>
+    <div class="text"><?= l::get('broken-links.ok') ?></div>
   </div>
 
 <?php else: ?>
@@ -28,8 +29,9 @@
       <li>
       <a href="<?= $page->url('edit') ?>">
         <?= $page->icon() ?>
+        <?php $links_string = count($links) == 1 ? l::get('broken-links.link') : l::get('broken-links.links'); ?>
         <span><?= $page->title() ?></span>
-        <small class="marginalia shiv shiv-left shiv-white" style="color: red; font-weight:bold;"><?= count($links) ?> <?= link_string(count($links)) ?></small>
+        <small class="marginalia shiv shiv-left shiv-white" style="color: red; font-weight:bold;"><?= count($links) ?> <?= $links_string ?></small>
       </a>
 
       <ul class="broken-link-list">
